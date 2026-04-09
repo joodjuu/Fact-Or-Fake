@@ -83,6 +83,27 @@
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
+    <div id="winnerModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="badge">จบเกมแล้ว 🎉</div>
+    <h3 id="winnerTitle">ผู้ชนะคือ...</h3>
+    <p id="winnerText">ขอบคุณที่เล่นเกมนี้</p>
+
+    <div class="quiz-actions">
+      <a
+        id="googleFormLink"
+        href="https://forms.gle/BWx4aT37u7v4ZgFs9"
+        target="_blank"
+        class="primary-btn"
+        style="text-decoration: none; display: inline-block; text-align: center;"
+      >
+        ไปตอบแบบฟอร์ม
+      </a>
+
+      <button id="closeWinnerBtn" class="accent-btn">ปิด</button>
+    </div>
+  </div>
+</div>
     <script src="/client.js"></script>
   </body>
 </html>

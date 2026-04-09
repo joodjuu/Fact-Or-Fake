@@ -24,6 +24,10 @@ const resultModal = document.getElementById("resultModal");
 const resultTitle = document.getElementById("resultTitle");
 const resultExplanation = document.getElementById("resultExplanation");
 const closeResultBtn = document.getElementById("closeResultBtn");
+const winnerModal = document.getElementById("winnerModal");
+const winnerTitle = document.getElementById("winnerTitle");
+const winnerText = document.getElementById("winnerText");
+const closeWinnerBtn = document.getElementById("closeWinnerBtn");
 
 let state = null;
 let myPlayerId = localStorage.getItem("snake_player_id") || null;
@@ -145,8 +149,13 @@ function renderControls() {
   if (state.winner) {
     const winner = state.players.find((p) => p.id === state.winner);
     statusText.textContent = `🎉 ${winner?.name || "มีผู้เล่น"} ชนะแล้ว`;
+
+    winnerTitle.textContent = `🎉 ${winner?.name || "ผู้เล่น"} ชนะ!`;
+    winnerText.textContent = "ขอบคุณที่เล่นเกมบันไดงู Fake or Fact เสร็จแล้วอย่าลืมกดไปตอบ Google Forms นะ";
+    winnerModal.classList.remove("hidden");
   } else {
     statusText.textContent = state.lastAction || "รอผู้เล่น";
+    winnerModal.classList.add("hidden");
   }
 }
 
@@ -212,6 +221,9 @@ falseBtn.addEventListener("click", () => {
 
 closeResultBtn.addEventListener("click", () => {
   resultModal.classList.add("hidden");
+});
+closeWinnerBtn.addEventListener("click", () => {
+  winnerModal.classList.add("hidden");
 });
 
 socket.on("room:joined", ({ roomCode, playerId }) => {
