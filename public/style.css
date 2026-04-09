@@ -308,3 +308,14 @@ input:focus {
     min-height: 58px;
   }
 }
+.winner-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.full-btn {
+  width: 100%;
+  text-align: center;
+}

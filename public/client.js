@@ -11,6 +11,7 @@ const createRoomBtn = document.getElementById("createRoomBtn");
 const joinRoomBtn = document.getElementById("joinRoomBtn");
 const startGameBtn = document.getElementById("startGameBtn");
 const rollDiceBtn = document.getElementById("rollDiceBtn");
+const leaveGameBtn = document.getElementById("leaveGameBtn");
 const roomInfo = document.getElementById("roomInfo");
 const playersList = document.getElementById("playersList");
 const board = document.getElementById("board");
@@ -29,7 +30,7 @@ const winnerTitle = document.getElementById("winnerTitle");
 const winnerText = document.getElementById("winnerText");
 const closeWinnerBtn = document.getElementById("closeWinnerBtn");
 const restartBtn = document.getElementById("restartBtn");
-const exitBtn = document.getElementById("exitBtn");
+
 
 let state = null;
 let myPlayerId = localStorage.getItem("snake_player_id") || null;
@@ -256,12 +257,17 @@ socket.on("room:error", (message) => {
 maybeReconnect();
 // 🔄 ปุ่มเล่นใหม่
 restartBtn.addEventListener("click", () => {
+  localStorage.removeItem("snake_player_id");
+  localStorage.removeItem("snake_room_code");
   location.reload();
 });
 
-// ❌ ปุ่มออกจากเกม
-exitBtn.addEventListener("click", () => {
+
+leaveGameBtn.addEventListener("click", () => {
+  // ล้างข้อมูลผู้เล่น
   localStorage.removeItem("snake_player_id");
   localStorage.removeItem("snake_room_code");
+
+  // กลับหน้า lobby
   location.reload();
 });
