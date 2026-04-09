@@ -1,0 +1,14 @@
+{
+  "name": "snake-ladder-multiplayer",
+  "version": "1.0.0",
+  "description": "Cute multiplayer snake and ladder game with true/false cards",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.8.1"
+  }
+}

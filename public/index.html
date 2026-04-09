@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snakes & Ladders Cute Multiplayer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>🐍 Snakes & Ladders</h1>
+          <p class="subtitle">เกมบันไดงูน่ารัก เล่นพร้อมกันได้สูงสุด 6 คน</p>
+        </div>
+        <div class="room-pill" id="roomInfo">ยังไม่ได้เข้าห้อง</div>
+      </header>
+
+      <main class="layout">
+        <section class="left-panel card">
+          <div id="lobbyView">
+            <h2>เข้าเกม</h2>
+            <label>ชื่อผู้เล่น</label>
+            <input id="playerName" placeholder="เช่น Fah" maxlength="20" />
+
+            <div class="lobby-actions">
+              <button id="createRoomBtn" class="primary-btn">สร้างห้อง</button>
+            </div>
+
+            <div class="join-box">
+              <label>รหัสห้อง</label>
+              <input id="roomCodeInput" placeholder="เช่น AB12C" maxlength="5" />
+              <button id="joinRoomBtn" class="secondary-btn">เข้าห้อง</button>
+            </div>
+            <p class="hint">เพื่อนสามารถเข้าจากมือถือหรือคอมคนละเครื่องได้ โดยเปิดลิงก์เดียวกัน</p>
+          </div>
+
+          <div id="gameView" class="hidden">
+            <div class="controls">
+              <button id="startGameBtn" class="primary-btn">เริ่มเกม</button>
+              <button id="rollDiceBtn" class="accent-btn">ทอยลูกเต๋า</button>
+            </div>
+
+            <div class="dice-box card-soft">
+              <div class="dice-value" id="diceDisplay">🎲</div>
+              <div id="statusText">รอผู้เล่น</div>
+            </div>
+
+            <div class="players-list" id="playersList"></div>
+          </div>
+        </section>
+
+        <section class="board-panel card">
+          <div class="board" id="board"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="quizModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="badge">จริงหรือปลอม?</div>
+        <h3 id="quizQuestion">คำถาม</h3>
+        <div class="quiz-actions">
+          <button id="trueBtn" class="primary-btn">จริง</button>
+          <button id="falseBtn" class="secondary-btn">ปลอม</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="badge">เฉลย</div>
+        <h3 id="resultTitle"></h3>
+        <p id="resultExplanation"></p>
+        <button id="closeResultBtn" class="accent-btn">ปิด</button>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+  </body>
+</html>
