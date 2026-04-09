@@ -28,6 +28,8 @@ const winnerModal = document.getElementById("winnerModal");
 const winnerTitle = document.getElementById("winnerTitle");
 const winnerText = document.getElementById("winnerText");
 const closeWinnerBtn = document.getElementById("closeWinnerBtn");
+const restartBtn = document.getElementById("restartBtn");
+const exitBtn = document.getElementById("exitBtn");
 
 let state = null;
 let myPlayerId = localStorage.getItem("snake_player_id") || null;
@@ -252,3 +254,14 @@ socket.on("room:error", (message) => {
 });
 
 maybeReconnect();
+// 🔄 ปุ่มเล่นใหม่
+restartBtn.addEventListener("click", () => {
+  location.reload();
+});
+
+// ❌ ปุ่มออกจากเกม
+exitBtn.addEventListener("click", () => {
+  localStorage.removeItem("snake_player_id");
+  localStorage.removeItem("snake_room_code");
+  location.reload();
+});
